@@ -67,7 +67,6 @@ class Event:
         return f"{type(self).__name__}('{self.title}', '{self.location}', {self.start_time:%d-%m-%Y %H:%M}," \
                 f" {self.duration.total_seconds() / 60}, '{self.owner}', {self.participants})"
 
-
 # e = Event('Piwo', 'Wwa', '16-05-2022 11:50', 11.5, 'Ala', ['Ela', 'Ola'])
 # print(repr(e))
 
