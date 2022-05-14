@@ -52,8 +52,21 @@ class Event:
         if parsed_date < datetime.now() + timedelta(minutes=15):
             raise ValueError(f'Not enough time to organize a meeting: {parsed_date - datetime.now()}')
 
-        self._start_time = value
+        self._start_time = parsed_date
+
+    def __str__(self):
+        delta_time = self.start_time - datetime.now()
+        hours, rest = delta_time.seconds // (60 * 60), delta_time.seconds % (60 * 60)
+        minutes, seconds = rest // 60, rest % 60
+        days = f'{delta_time.days} days, ' if delta_time.days > 0 else ''
+        seconds = f'0{seconds}'[-2:]
+        minutes = f'0{minutes}'[-2:]
+        return f'{self.title}, time to event: {days}{hours}:{minutes}:{seconds}'
+
+    def __repr__(self):
+        return f"{type(self).__name__}('{self.title}', '{self.location}', {self.start_time:%d-%m-%Y %H:%M}," \
+                f" {self.duration.total_seconds() / 60}, '{self.owner}', {self.participants})"
 
 
-e = Event(42, '', '14-05-2022 11:29', 11, '', '')
-print(e.start_time)
+e = Event('Piwo', 'Wwa', '16-05-2022 11:50', 11.5, 'Ala', ['Ela', 'Ola'])
+print(repr(e))
