@@ -68,5 +68,6 @@ class Event:
                 f" {self.duration.total_seconds() / 60}, '{self.owner}', {self.participants})"
 
 
-e = Event('Piwo', 'Wwa', '16-05-2022 11:50', 11.5, 'Ala', ['Ela', 'Ola'])
-print(repr(e))
+# e = Event('Piwo', 'Wwa', '16-05-2022 11:50', 11.5, 'Ala', ['Ela', 'Ola'])
+# print(repr(e))
+
